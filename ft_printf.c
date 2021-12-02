@@ -12,20 +12,10 @@
 
 #include "printf.h"
 
-static int is_conversion_char(int c)
-{
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X' )
-		return (1);
-	return (0);
-}
-
-
 void check_next_char(int next_char, va_list args, int *ret)
 {
 	if(next_char == '%')
 		ft_putchar('%', ret);
-	else if (!is_conversion_char(next_char))
-		ft_putchar(next_char, ret);
 	else if (next_char == 'c')
 		ft_putchar(va_arg(args, int), ret);
 	else if (next_char == 's')
@@ -37,10 +27,17 @@ void check_next_char(int next_char, va_list args, int *ret)
 	else if (next_char == 'u')
 		ft_putnbr_unsigned(va_arg(args, int), ret);
 	else if (next_char == 'x')
-		ft_putnbr_unsigned(va_arg(args, int), ret);
+		ft_puthex_lower(va_arg(args, int), ret);
+	else if (next_char == 'X')
+		ft_puthex_upper(va_arg(args, int), ret);
+	else if (next_char == 'p')
+		ft_putadr(va_arg(args, void *), ret);
+	else
+		ft_putchar(next_char, ret);
+	
 }
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	int	i;
 	int	ret;
@@ -58,17 +55,4 @@ int ft_printf(const char *str, ...)
 		i++;
 	}
 	return (ret);
-}
-
-
-int main()
-{
-
-	int ft_ret =  ft_printf("%u\n", -123456789);
-
-
-	int ret = printf("%u\n", -123456789);
-
-	printf("ft_ret = %d | ret = %d\n", ft_ret, ret);
-
 }
