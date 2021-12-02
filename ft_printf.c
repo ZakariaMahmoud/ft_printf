@@ -6,7 +6,7 @@
 /*   By: zmahmoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:46:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2021/12/02 14:38:59 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:15:27 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static void	check_next_char(int next_char, va_list args, int *ret)
 	else if (next_char == 'i')
 		ft_putnbr(va_arg(args, int), ret);
 	else if (next_char == 'u')
-		ft_putnbr_unsigned(va_arg(args, int), ret);
+		ft_putnbr_unsigned(va_arg(args, unsigned int), ret);
 	else if (next_char == 'x')
-		ft_puthex_lower(va_arg(args, int), ret);
+		ft_puthex_lower(va_arg(args, unsigned int), ret);
 	else if (next_char == 'X')
-		ft_puthex_upper(va_arg(args, int), ret);
+		ft_puthex_upper(va_arg(args, unsigned int), ret);
 	else if (next_char == 'p')
 		ft_pointer(va_arg(args, void *), ret);
 	else
