@@ -6,17 +6,17 @@
 /*   By: zmahmoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:46:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2021/12/01 12:47:00 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2021/12/02 14:38:59 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void check_next_char(int next_char, va_list args, int *ret)
+static void	check_next_char(int next_char, va_list args, int *ret)
 {
 	if (next_char == '\0')
 		write(1, "\0", 1);
-	else if(next_char == '%')
+	else if (next_char == '%')
 		ft_putchar('%', ret);
 	else if (next_char == 'c')
 		ft_putchar(va_arg(args, int), ret);
@@ -36,21 +36,20 @@ void check_next_char(int next_char, va_list args, int *ret)
 		ft_pointer(va_arg(args, void *), ret);
 	else
 		ft_putchar(next_char, ret);
-	
 }
 
 int	ft_printf(const char *str, ...)
 {
-	int	i;
-	int	ret;
-	va_list args;
-	va_start(args, str);
+	int		i;
+	int		ret;
+	va_list	args;
 
 	i = 0;
 	ret = 0;
+	va_start(args, str);
 	while (str[i] != '\0')
 	{
-		if(str[i] == '%')
+		if (str[i] == '%')
 		{
 			check_next_char(str[i + 1], args, &ret);
 			if (str[i + 1])
