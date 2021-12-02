@@ -10,12 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_putstr(char *s, int *ret)
 {
 	if (!s)
+	{
+		write(1, "(null)", 6);
+		*ret += 6;
 		return ;
+	}
 	write(1, s, ft_strlen(s));
 	*ret += ft_strlen(s);
 }

@@ -1,6 +1,6 @@
-#include "printf.h"
+#include "ft_printf.h"
 
-void ft_puthex_upper(unsigned long  n, int *ret)
+void ft_puthex_upper(unsigned int  n, int *ret)
 {
 	char	*base;
 

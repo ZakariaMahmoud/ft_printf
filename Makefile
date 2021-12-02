@@ -1,12 +1,12 @@
 SRCS = ft_printf.c\
-	ft_putadr.c\
+	ft_pointer.c\
 	ft_putchar.c\
 	ft_puthex_lower.c\
 	ft_puthex_upper.c\
 	ft_putnbr.c\
 	ft_putnbr_unsigned.c\
 	ft_putstr.c\
-	ft_strlen.c\
+	ft_strlen.c
 
 FLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
